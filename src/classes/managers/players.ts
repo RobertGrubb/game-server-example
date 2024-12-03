@@ -2,6 +2,7 @@ import { ServerChannel } from "@geckos.io/server";
 import utilities from "../../utilities/index.js";
 import Match from "../instances/match.js";
 import Player from "../prefabs/player.js";
+import * as Types from "../../types.js";
 
 /**
  * This class will hold all player instances
@@ -29,7 +30,8 @@ export default class PlayerManager {
      */
     update (delta : number) : void {
         for (let i = 0; i < this.players.length; i++) {
-            this.players[i].update(delta);
+            const data: Types.PLAYER_DATA = this.players[i].update(delta);
+            this.match.snapshot.update("players", data.id, data);
         }
     }
 

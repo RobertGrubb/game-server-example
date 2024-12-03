@@ -30,8 +30,8 @@ export default class Player {
     /**
      * Update method
      */
-    update (delta: number) : void {
-
+    update (delta: number) : Types.PLAYER_DATA {
+        return this.data();
     }
 
     /**

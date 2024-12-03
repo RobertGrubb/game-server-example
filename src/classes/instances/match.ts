@@ -4,6 +4,7 @@ import ENUMS from "../../enums.js";
 import utilities from "../../utilities/index.js";
 import PlayerManager from "../managers/players.js";
 import GameLoop from "./game-loop.js";
+import Snapshot from "./snapshot.js";
 
 /**
  * This is an instance of a match that is tied
@@ -17,6 +18,7 @@ export default class Match {
     players: PlayerManager;
     gameLoop: GameLoop;
     matchState: Types.MATCH_STATE = ENUMS.MATCH_STATES.DEFAULT;
+    snapshot: Types.SNAPSHOT;
 
     /**
      * Events that are being listened to
@@ -35,6 +37,7 @@ export default class Match {
         this.room = this.server?.room(this.id);
         this.players = new PlayerManager(this);
         this.gameLoop = new GameLoop(this);
+        this.snapshot = new Snapshot(this);
 
         this.created();
     }
@@ -50,6 +53,14 @@ export default class Match {
          */
         this.gameLoop.on(ENUMS.GAME_LOOP_EVENTS.UPDATE, (delta: number) => {
             this.update(delta);
+
+            /**
+             * @TODO Get changes from snapshot and send them to
+             * the room.
+             */
+
+            // Clear changed
+            this.snapshot.clear("changed", "players");
         })
     }
 
@@ -61,7 +72,7 @@ export default class Match {
      * @param {number} delta 
      */
     update (delta: number) : void {
-        console.log(delta);
+        
     }
 
     /**
