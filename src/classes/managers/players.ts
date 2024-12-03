@@ -1,7 +1,7 @@
 import { ServerChannel } from "@geckos.io/server";
 import utilities from "../../utilities/index.js";
 import Match from "../instances/match.js";
-import Player from "../instances/player.js";
+import Player from "../prefabs/player.js";
 
 /**
  * This class will hold all player instances
@@ -11,6 +11,11 @@ export default class PlayerManager {
     match: Match
     players: Array<Player>
 
+    /**
+     * Instantiates a new PlayerManager instance for 
+     * the specified match.
+     * @param { Match } match The match instance
+     */
     constructor (match: Match) {
         this.match = match;
         this.players = [];
@@ -19,20 +24,30 @@ export default class PlayerManager {
     }
 
     /**
+     * Iterate through each player and call the update method.
+     * @param { number } delta Passed from the game loop method
+     */
+    update (delta : number) : void {
+        for (let i = 0; i < this.players.length; i++) {
+            this.players[i].update(delta);
+        }
+    }
+
+    /**
      * Creates a new player instance, adds it to the pool, and returns it
-     * @returns { Player }
+     * @returns { Player } The player instance
      */
     create (socket: ServerChannel) : Player {
         const playerId: string = socket.userData?.username;
-        const player = new Player(playerId, socket)
+        const player = new Player(playerId, socket, this.match);
         this.players.push(player);
         return player;
     }
 
     /**
      * Checks if a player exists by it's id
-     * @param {string} id 
-     * @returns {boolean}
+     * @param {string} id The id of the player
+     * @returns {boolean} Returns if the player exists or not
      */
     exists (id: string) : boolean {
         if (this.get(id)) {
@@ -44,8 +59,8 @@ export default class PlayerManager {
 
     /**
      * Returns the instance for a player if applicable
-     * @param {string} id 
-     * @returns null | { key: number, instance: Player } 
+     * @param {string} id The player id
+     * @returns { null | { key: number, instance: Player } } 
      */
     get (id: string) : null | { key: number, instance: Player } {
         const key = this.players.findIndex((p: Player) => p.id === id);
@@ -62,7 +77,7 @@ export default class PlayerManager {
 
     /**
      * Removes a player from the players pool
-     * @param {string} id
+     * @param {string} id The player id
      * @returns {boolean}
      */
     remove (id: string | undefined) : boolean {

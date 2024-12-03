@@ -10,11 +10,12 @@ const createRoute = (matches: MatchesManager) : Router => {
     const router = express.Router();
 
     router.get('/matches/create', (req: Request, res: Response) => {
-        const created = matches.create();
+        const match = matches.create();
+        match.start();
 
         res.json({
             success: true,
-            match: created?.id
+            match: match?.id
         });
     });
 

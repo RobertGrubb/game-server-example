@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import * as Types from "../types.js";
 import utilities from "./../utilities/index.js";
 
-const api = (gameServer: Types.GAME_SERVER) => {
+const api = (gameServer: Types.GAME_SERVER, database: Types.DATABASE) => {
     /**
      * API Configuration
      */
@@ -25,7 +25,7 @@ const api = (gameServer: Types.GAME_SERVER) => {
     /**
      * Use imported routes
      */
-    app.use('/', routes(gameServer.managers.matches));
+    app.use('/', routes(gameServer.managers.matches, database));
 
     /**
      * API Listener

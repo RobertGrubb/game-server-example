@@ -7,7 +7,7 @@ import MatchesManager from '../classes/managers/matches.js';
 /**
  * This will setup the geckos server and run it.
  */
-const server = () : Types.GAME_SERVER => {
+const server = (database: Types.DATABASE) : Types.GAME_SERVER => {
     utilities.logger.info('Starting Geckos...');
 
     // Instantiate the matches manager

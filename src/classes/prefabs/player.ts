@@ -10,10 +10,12 @@ export default class Player {
 
     id: string
     socket: ServerChannel
+    match: Types.MATCH
 
-    constructor (id: string, socket: ServerChannel) {
+    constructor (id: string, socket: ServerChannel, match: Types.MATCH) {
         this.id = id;
         this.socket = socket;
+        this.match = match;
 
         this.created();
     }
@@ -23,6 +25,13 @@ export default class Player {
      */
     created () : void {
         utilities.logger.success(`Player ${this.id} was successfully created.`);
+    }
+
+    /**
+     * Update method
+     */
+    update (delta: number) : void {
+
     }
 
     /**

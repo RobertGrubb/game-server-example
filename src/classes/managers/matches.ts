@@ -1,5 +1,6 @@
 import { v4 } from 'uuid';
 import { GeckosServer } from "@geckos.io/server";
+import ENUMS from "../../enums.js";
 import utilities from "../../utilities/index.js";
 import Match from "../instances/match.js";
 
@@ -17,6 +18,10 @@ export default class MatchesManager {
         utilities.logger.info('MatchesManager instantiated');
     }
 
+    /**
+     * This sets the server instance within the match manager
+     * @param {GeckosServer} server The geckos server instance
+     */
     setServer (server: GeckosServer) {
         this.server = server;
         utilities.logger.info('MatchesManager: server instance has been set');
@@ -30,6 +35,16 @@ export default class MatchesManager {
         const matchId: string = v4();
         const match: Match = new Match(matchId, this.server);
         this.matches.push(match);
+
+        /**
+         * Listen for the event of when the game ends
+         * and remove the match from the server pool.
+         */
+        match.on(ENUMS.MATCH_EVENTS.ON_END, (timestamp: number) => {
+            utilities.logger.warning(`Match ${match.id} has ended. Cleaning up...`);
+            this.remove(match.id);
+        });
+
         return match;
     }
 

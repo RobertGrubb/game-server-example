@@ -1,9 +1,19 @@
 import express, { Request, Response, Router } from 'express';
+import * as Types from '../../types.js';
 import MatchesManager from '../../classes/managers/matches.js';
+
+/**
+ * Match routes
+ */
 import matchesCreate from "./matches/create.js";
 import matchesRemove from "./matches/remove.js";
 
-const createRoutes = (matches: MatchesManager) : Router => {
+/**
+ * User routes
+ */
+import userIndex from "./user/index.js";
+
+const createRoutes = (matches: MatchesManager, database: Types.DATABASE) : Router => {
 
     const routes = express.Router();
 
@@ -18,6 +28,7 @@ const createRoutes = (matches: MatchesManager) : Router => {
      */
     routes.use(matchesCreate(matches));
     routes.use(matchesRemove(matches));
+    routes.use(userIndex(database));
 
     return routes;
 }

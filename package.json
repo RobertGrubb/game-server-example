@@ -21,6 +21,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.6",
     "express": "^4.21.1",
+    "mysql2": "^3.11.5",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.10",
@@ -28,5 +29,8 @@
     "typescript": "^5.7.2",
     "uuidv4": "^6.2.13"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "sequelize": "^6.37.5"
+  }
 }
