@@ -1,5 +1,5 @@
 import express, { Request, Response, Router } from 'express';
-import MatchesManager from '../../classes/managers/matches';
+import MatchesManager from '../../classes/managers/matches.js';
 import matchesCreate from "./matches/create.js";
 import matchesRemove from "./matches/remove.js";
 

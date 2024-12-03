@@ -1,5 +1,6 @@
 import express, { Request, Response, Router } from 'express';
-import MatchesManager from '../../../classes/managers/matches';
+import ENUMS from "../../../enums.js";
+import MatchesManager from '../../../classes/managers/matches.js';
 
 /**
  * Removes a match from the match pool if it exists.
@@ -12,10 +13,24 @@ const createRoute = (matches: MatchesManager) : Router => {
     router.get('/matches/remove', (req: Request, res: Response) => {
         const id : string | undefined = String(req.query.id);
 
-        if (!id) res.status(400).json({ error: true, message: 'INVALID_REQUEST' });
+        if (!id) {
+            res.status(400).json({ 
+                error: true, 
+                message: ENUMS.API.MESSAGES.INVALID_REQUEST 
+            });
+
+            return;
+        }
 
         const removed = matches.remove(id);
-        if (!removed) res.status(400).json({ error: true, message: 'UNABLE_TO_REMOVE' });
+        if (!removed) {
+            res.status(400).json({ 
+                error: true, message: 
+                ENUMS.API.MESSAGES.UNABLE_TO_REMOVE 
+            });
+
+            return;
+        }
 
         res.json({
             success: true,

@@ -1,5 +1,5 @@
 import express, { Request, Response, Router } from 'express';
-import MatchesManager from '../../../classes/managers/matches';
+import MatchesManager from '../../../classes/managers/matches.js';
 
 /**
  * Creates a new match in the match pool

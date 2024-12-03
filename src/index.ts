@@ -9,7 +9,6 @@ import "dotenv/config";
 import utilities from "./utilities/index.js";
 import api from './api/index.js';
 import geckos from './geckos/index.js';
-import MatchesManager from './classes/managers/matches.js';
 
 /**
  * Print that the server is booting up
