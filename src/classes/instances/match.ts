@@ -51,17 +51,7 @@ export default class Match {
         /**
          * Process the updates for this current game loop
          */
-        this.gameLoop.on(ENUMS.GAME_LOOP_EVENTS.UPDATE, (delta: number) => {
-            this.update(delta);
-
-            /**
-             * @TODO Get changes from snapshot and send them to
-             * the room.
-             */
-
-            // Clear changed
-            this.snapshot.clear("changed", "players");
-        })
+        this.gameLoop.on(ENUMS.GAME_LOOP_EVENTS.UPDATE, this.update)
     }
 
     /**
@@ -72,7 +62,13 @@ export default class Match {
      * @param {number} delta 
      */
     update (delta: number) : void {
-        
+        /**
+         * @TODO Get changes from snapshot and send them to
+         * the room.
+         */
+
+        // Clear changed
+        this.snapshot.clear("changed", "players");
     }
 
     /**

@@ -53,8 +53,6 @@ const server = (database: Types.DATABASE) : Types.GAME_SERVER => {
                 username: username,
                 matchId: matchId
             }
-
-            return false;
         },
 
         cors: { 
