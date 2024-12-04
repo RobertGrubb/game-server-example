@@ -1,10 +1,10 @@
 import { GeckosServer, ServerChannel } from "@geckos.io/server";
-import * as Types from "../../types.js";
-import ENUMS from "../../enums.js";
-import utilities from "../../utilities/index.js";
-import PlayerManager from "../managers/players.js";
-import GameLoop from "./game-loop.js";
-import Snapshot from "./snapshot.js";
+import * as Types from "@/types.js";
+import ENUMS from "@/enums.js";
+import utilities from "@/common/utilities.js";
+import PlayerManager from "@/server/classes/managers/players.js";
+import GameLoop from "@/server/classes/instances/game-loop.js";
+import Snapshot from "@/server/classes/instances/snapshot.js";
 
 /**
  * This is an instance of a match that is tied
@@ -51,7 +51,7 @@ export default class Match {
         /**
          * Process the updates for this current game loop
          */
-        this.gameLoop.on(ENUMS.GAME_LOOP_EVENTS.UPDATE, this.update)
+        this.gameLoop.on(ENUMS.GAME_LOOP_EVENTS.UPDATE, this.update.bind(this))
     }
 
     /**
@@ -68,7 +68,7 @@ export default class Match {
          */
 
         // Clear changed
-        this.snapshot.clear("changed", "players");
+        this.snapshot.flush("changed", "players");
     }
 
     /**

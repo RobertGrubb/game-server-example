@@ -1,5 +1,5 @@
-import * as Types from "../../types.js";
-import utilities from "../../utilities/index.js";
+import * as Types from "@/types.js";
+import utilities from "@/common/utilities.js";
 import mysql, { Connection, ConnectionOptions, RowDataPacket, FieldPacket } from "mysql2/promise";
 
 export default class Database {

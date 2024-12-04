@@ -1,8 +1,8 @@
 import { ServerChannel } from "@geckos.io/server";
-import utilities from "../../utilities/index.js";
-import Match from "../instances/match.js";
-import Player from "../prefabs/player.js";
-import * as Types from "../../types.js";
+import utilities from "@/common/utilities.js";
+import Match from "@/server/classes/instances/match.js";
+import Player from "@/server/classes/prefabs/player.js";
+import * as Types from "@/types.js";
 
 /**
  * This class will hold all player instances

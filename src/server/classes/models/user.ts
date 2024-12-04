@@ -5,7 +5,7 @@ export default class User {
     /**
      * Default data structure
      */
-    data : { [key: string]: any} = {
+    data : { [key: string]: any } = {
         user_group_id: '',
         username: '',
         rank: 0,

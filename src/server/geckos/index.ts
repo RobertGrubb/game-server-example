@@ -1,7 +1,7 @@
 import geckos, { GeckosServer, ServerChannel } from "@geckos.io/server";
 import { IncomingMessage, OutgoingMessage } from "http";
-import * as Types from "../types.js";
-import utilities from "./../utilities/index.js";
+import * as Types from "@/types.js";
+import utilities from "@/common/utilities.js";
 import MatchesManager from '../classes/managers/matches.js';
 
 /**

@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
-import ENUMS from "../../../enums.js";
-import MatchesManager from '../../../classes/managers/matches.js';
+import ENUMS from "@/enums.js";
+import MatchesManager from '@/server/classes/managers/matches.js';
 
 /**
  * Removes a match from the match pool if it exists.

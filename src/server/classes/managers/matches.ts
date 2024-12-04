@@ -1,8 +1,8 @@
 import { v4 } from 'uuid';
 import { GeckosServer } from "@geckos.io/server";
-import ENUMS from "../../enums.js";
-import utilities from "../../utilities/index.js";
-import Match from "../instances/match.js";
+import ENUMS from "@/enums.js";
+import utilities from "@/common/utilities.js";
+import Match from "@/server/classes/instances/match.js";
 
 /**
  * This class will hold all match instances

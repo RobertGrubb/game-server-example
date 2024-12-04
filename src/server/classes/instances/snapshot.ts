@@ -1,6 +1,6 @@
 import _ from "lodash";
-import * as Types from "../../types.js";
-import utilities from "../../utilities/index.js";
+import * as Types from "@/types.js";
+import utilities from "@/common/utilities.js";
 
 /**
  * Snapshot class will store the latest player
@@ -87,9 +87,9 @@ export default class Snapshot {
      * @param {string} storeType 
      * @param {string} type 
      * @param {string} id 
-     * @returns void
+     * @returns { void }
      */
-    clear (storeType: string, type: string, id = null) {
+    flush (storeType: string, type: string, id = null) {
         if (storeType == 'stored') {
 
             // Validate that information is present

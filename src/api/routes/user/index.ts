@@ -1,7 +1,7 @@
 import express, { Request, Response, Router } from 'express';
-import ENUMS from "../../../enums.js";
-import * as Types from '../../../types.js';
-import models from "../../../classes/models/index.js";
+import ENUMS from "@/enums.js";
+import * as Types from 'src/types.js';
+import models from "@/server/classes/models/index.js";
 
 /**
  * Creates a new match in the match pool
@@ -24,6 +24,15 @@ const createRoute = (database: Types.DATABASE) : Router => {
         }
 
         const userData = await database.userExists(username);
+
+        if (!userData) {
+            res.status(400).json({ 
+                error: true, 
+                message: ENUMS.API.MESSAGES.USER_NO_EXIST
+            });
+
+            return;
+        }
 
         res.json({
             success: true,

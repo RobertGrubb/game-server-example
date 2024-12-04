@@ -1,11 +1,11 @@
 import { GeckosServer } from "@geckos.io/server";
-import Database from './classes/instances/database.js';
-import MatchesManager from "./classes/managers/matches.js";
-import PlayerManager from "./classes/managers/players.js";
-import Player from "./classes/prefabs/player.js";
-import Match from "./classes/instances/match.js";
-import GameLoop from "./classes/instances/game-loop.js";
-import Snapshot from "./classes/instances/snapshot.js";
+import Database from '@/server/classes/instances/database.js';
+import MatchesManager from "@/server/classes/managers/matches.js";
+import PlayerManager from "@/server/classes/managers/players.js";
+import Player from "@/server/classes/prefabs/player.js";
+import Match from "@/server/classes/instances/match.js";
+import GameLoop from "@/server/classes/instances/game-loop.js";
+import Snapshot from "@/server/classes/instances/snapshot.js";
 
 // Match related
 export interface MATCH_DATA {

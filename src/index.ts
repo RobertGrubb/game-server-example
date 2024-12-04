@@ -6,10 +6,10 @@ import "dotenv/config";
 /**
  * Necessary imports
  */
-import utilities from "./utilities/index.js";
-import api from './api/index.js';
-import geckos from './geckos/index.js';
-import Database from './classes/instances/database.js';
+import utilities from "@/common/utilities.js";
+import api from '@/api/index.js';
+import geckos from '@/server/geckos/index.js';
+import Database from '@/server/classes/instances/database.js';
 
 /**
  * Print that the server is booting up

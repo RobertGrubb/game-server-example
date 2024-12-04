@@ -2,8 +2,8 @@ import express from 'express';
 import routes from "./routes/index.js";
 import cors from 'cors';
 import bodyParser from "body-parser";
-import * as Types from "../types.js";
-import utilities from "./../utilities/index.js";
+import * as Types from "@/types.js";
+import utilities from "@/common/utilities.js";
 
 const api = (gameServer: Types.GAME_SERVER, database: Types.DATABASE) => {
     /**

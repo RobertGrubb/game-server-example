@@ -1,17 +1,17 @@
 import express, { Request, Response, Router } from 'express';
-import * as Types from '../../types.js';
-import MatchesManager from '../../classes/managers/matches.js';
+import * as Types from 'src/types.js';
+import MatchesManager from '@/server/classes/managers/matches.js';
 
 /**
  * Match routes
  */
-import matchesCreate from "./matches/create.js";
-import matchesRemove from "./matches/remove.js";
+import matchesCreate from "@/api/routes/matches/create.js";
+import matchesRemove from "@/api/routes/matches/remove.js";
 
 /**
  * User routes
  */
-import userIndex from "./user/index.js";
+import userIndex from "@/api/routes/user/index.js";
 
 const createRoutes = (matches: MatchesManager, database: Types.DATABASE) : Router => {
 

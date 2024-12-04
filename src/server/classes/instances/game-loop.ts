@@ -1,7 +1,7 @@
 import { ServerChannel } from "@geckos.io/server";
-import * as Types from "../../types.js";
-import utilities from "../../utilities/index.js";
-import ENUMS from "../../enums.js";
+import * as Types from "@/types.js";
+import utilities from "@/common/utilities.js";
+import ENUMS from "@/enums.js";
 
 /**
  * This is an instance of a player that is tied
